@@ -1,0 +1,172 @@
+/* style.css: controls how index.html looks.
+   A rule is:  selector { property: value; }  */
+
+/* VARIABLES: change a color here and it updates everywhere. */
+:root {
+  --bg: #f2f6fa;
+  --ink: #14213d;
+  --muted: #51607a;
+  --accent: #2f5bea;      /* try changing me! */
+  --highlight: #ffd23f;
+  --code-bg: #0f1b33;
+  --line: #d3dce8;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 16px; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.65;
+}
+
+h1, h2, h3 {
+  font-family: "Bricolage Grotesque", "Inter", sans-serif;
+  line-height: 1.2;
+}
+h2 { font-size: 1.7rem; font-weight: 800; margin: 0 0 0.6em; }
+h3 { font-size: 1.1rem; font-weight: 500; margin: 1.4em 0 0.4em; }
+a { color: var(--accent); }
+a:focus-visible, summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* TOP BANNER */
+.top { background: var(--code-bg); color: #fff; padding: 40px 6vw; }
+.top h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; }
+.top p { margin: 0; max-width: 60ch; color: #c9d4ea; }
+
+/* PAGE LAYOUT: sidebar + notes (CSS grid) */
+.layout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 5vw 60px;
+}
+
+/* SIDEBAR: stays visible while you scroll */
+.toc {
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+.toc h2 { font-size: 1.1rem; margin-bottom: 8px; }
+.toc ol { margin: 0; padding-left: 1.2em; }
+.toc li { margin: 4px 0; }
+.toc a { text-decoration: none; color: var(--ink); }
+.toc a:hover { color: var(--accent); text-decoration: underline; }
+
+/* EACH CHAPTER */
+section { padding: 8px 0 36px; border-bottom: 1px solid var(--line); margin-bottom: 32px; }
+section:last-child { border-bottom: 0; }
+ul, ol { padding-left: 1.4em; }
+li { margin: 4px 0; }
+
+/* CODE */
+code, pre { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+code { background: #e4ebf5; padding: 2px 6px; border-radius: 4px; font-size: 0.88em; }
+pre {
+  background: var(--code-bg);
+  color: #e8efff;
+  padding: 16px;
+  border-radius: 10px;
+  overflow-x: auto;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+pre code { background: none; padding: 0; color: inherit; font-size: inherit; }
+
+/* KEY POINTS and REMEMBER boxes */
+.key {
+  background: #fff8dc;
+  border-left: 6px solid var(--highlight);
+  border-radius: 6px;
+  padding: 4px 20px 10px;
+  margin-bottom: 20px;
+}
+.key h3 { margin-top: 12px; }
+.remember {
+  background: #e8efff;
+  border-left: 6px solid var(--accent);
+  border-radius: 6px;
+  padding: 10px 16px;
+}
+
+/* TABLES */
+table {
+  width: 100%;
+  border-collapse: collapse;   /* merges borders into single lines */
+  background: #fff;
+  margin: 16px 0;
+  font-size: 0.95rem;
+}
+caption { text-align: left; font-weight: 600; padding-bottom: 6px; color: var(--muted); }
+th, td { border: 1px solid var(--line); padding: 8px 12px; text-align: left; vertical-align: top; }
+th { background: #e4ebf5; }
+tbody tr:nth-child(even) { background: #f7f9fc; }   /* zebra stripes */
+
+/* CODE + RESULT side by side */
+.demo { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0; }
+.demo > * { min-width: 0; }
+.result {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+.result .mini { margin: 4px 0; font-family: "Inter", sans-serif; }
+.result ul, .result ol, .result dl { margin: 6px 0 0; }
+.result dd { margin-left: 1.2em; }
+.result table { margin: 0; }
+.result input[type="text"] { margin: 4px 0 8px; padding: 4px 8px; }
+.result button, .result select { margin-top: 6px; padding: 4px 10px; }
+
+blockquote {
+  margin: 16px 0;
+  padding: 8px 18px;
+  border-left: 4px solid var(--line);
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* BOX MODEL DIAGRAM: nested boxes drawn with CSS */
+.box { max-width: 420px; text-align: center; font-size: 0.9rem; }
+.box div { padding: 18px; }
+.b-margin  { background: #ffe9b8; }
+.b-border  { background: #ffc9a8; border: 4px solid #e4572e; }
+.b-padding { background: #cfe0ff; }
+.b-content { background: #fff; border: 1px dashed var(--muted); }
+
+/* QUESTIONS you click to reveal */
+details { background: #fff; border: 1px solid var(--line); border-radius: 8px; padding: 10px 16px; margin-bottom: 8px; }
+summary { cursor: pointer; font-weight: 600; }
+details p { margin: 8px 0 0; }
+
+.foot { background: var(--code-bg); color: #c9d4ea; text-align: center; padding: 24px 6vw; }
+.foot p { margin: 0; }
+
+/* RESPONSIVE: stack things on phones and tablets */
+@media (max-width: 800px) {
+  .layout { grid-template-columns: 1fr; gap: 20px; }
+  .toc { position: static; }
+  .demo { grid-template-columns: 1fr; }
+}
+
+/* PRINT: students can print the notes (no sidebar, no dark boxes) */
+@media print {
+  .toc, .top p, .foot { display: none; }
+  .layout { display: block; }
+  .top { background: none; color: #000; padding: 0 0 12px; }
+  pre { background: #f3f3f3; color: #000; border: 1px solid #ccc; }
+  section { break-inside: avoid-page; }
+}
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

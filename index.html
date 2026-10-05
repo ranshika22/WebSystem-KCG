@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML &amp; CSS Study Guide</title>
+  <meta name="description" content="A student study guide to HTML and CSS: headings, lists, tables, links, forms and styling.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=IBM+Plex+Mono&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <h1>HTML &amp; CSS Study Guide</h1>
+  <p>Short notes, examples and practice questions for students. Each chapter shows the code and what it looks like in a browser.</p>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR: table of contents. Each link jumps to the section with the matching id. -->
+  <nav class="toc" aria-label="Chapters">
+    <h2>Chapters</h2>
+    <ol>
+      <li><a href="#basics">How a website works</a></li>
+      <li><a href="#structure">Page structure</a></li>
+      <li><a href="#headings">Headings</a></li>
+      <li><a href="#text">Paragraphs &amp; text</a></li>
+      <li><a href="#lists">Lists</a></li>
+      <li><a href="#tables">Tables</a></li>
+      <li><a href="#links">Links &amp; images</a></li>
+      <li><a href="#forms">Forms</a></li>
+      <li><a href="#css">CSS basics</a></li>
+      <li><a href="#cheat">Cheat sheet</a></li>
+      <li><a href="#practice">Practice</a></li>
+      <li><a href="#publish">Publish on GitHub</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- ========== 1 ========== -->
+    <section id="basics">
+      <h2>1. How a website works</h2>
+      <div class="key">
+        <h3>Key points</h3>
+        <ul>
+          <li>A website is a folder of files stored on a <strong>server</strong>.</li>
+          <li>A <strong>browser</strong> (Chrome, Safari, Firefox) requests the files and displays them.</li>
+          <li><strong>HTML</strong> = structure, <strong>CSS</strong> = style, <strong>JavaScript</strong> = behavior.</li>
+        </ul>
+      </div>
+      <table>
+        <caption>The three languages of the web</caption>
+        <thead><tr><th>Language</th><th>Job</th><th>Analogy</th></tr></thead>
+        <tbody>
+          <tr><td>HTML</td><td>Defines the content and structure</td><td>Walls and rooms</td></tr>
+          <tr><td>CSS</td><td>Controls colors, fonts, layout</td><td>Paint and furniture</td></tr>
+          <tr><td>JavaScript</td><td>Makes the page interactive</td><td>Electricity</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ========== 2 ========== -->
+    <section id="structure">
+      <h2>2. Page structure</h2>
+      <p>Every HTML page has the same skeleton.</p>
+      <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Tab title&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    ...everything visitors see...
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      <ul>
+        <li><code>&lt;head&gt;</code> holds information <em>about</em> the page (title, CSS link).</li>
+        <li><code>&lt;body&gt;</code> holds the visible content.</li>
+        <li>Most tags come in pairs: an opening <code>&lt;p&gt;</code> and a closing <code>&lt;/p&gt;</code>.</li>
+      </ul>
+      <p class="remember"><strong>Remember:</strong> name your home page <code>index.html</code>. Servers look for that name first.</p>
+    </section>
+
+    <!-- ========== 3 ========== -->
+    <section id="headings">
+      <h2>3. Headings</h2>
+      <p>HTML has six heading levels. <code>&lt;h1&gt;</code> is the most important, <code>&lt;h6&gt;</code> the least.</p>
+      <div class="demo">
+        <pre><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;</code></pre>
+        <div class="result">
+          <h1 class="mini">Heading 1</h1>
+          <h2 class="mini">Heading 2</h2>
+          <h3 class="mini">Heading 3</h3>
+          <h4 class="mini">Heading 4</h4>
+          <h5 class="mini">Heading 5</h5>
+          <h6 class="mini">Heading 6</h6>
+        </div>
+      </div>
+      <ul>
+        <li>Use <strong>one</strong> <code>&lt;h1&gt;</code> per page, as the main title.</li>
+        <li>Don't skip levels (for example, <code>h2</code> straight to <code>h4</code>).</li>
+        <li>Pick headings for meaning, not for size. Use CSS to change size.</li>
+      </ul>
+    </section>
+
+    <!-- ========== 4 ========== -->
+    <section id="text">
+      <h2>4. Paragraphs &amp; text</h2>
+      <table>
+        <caption>Common text tags</caption>
+        <thead><tr><th>Tag</th><th>Purpose</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;p&gt;</code></td><td>Paragraph</td><td>A block of text</td></tr>
+          <tr><td><code>&lt;strong&gt;</code></td><td>Important text</td><td><strong>bold</strong></td></tr>
+          <tr><td><code>&lt;em&gt;</code></td><td>Emphasis</td><td><em>italic</em></td></tr>
+          <tr><td><code>&lt;br&gt;</code></td><td>Line break</td><td>Starts a new line</td></tr>
+          <tr><td><code>&lt;hr&gt;</code></td><td>Horizontal rule</td><td>A divider line</td></tr>
+          <tr><td><code>&lt;blockquote&gt;</code></td><td>Long quotation</td><td>Indented quote block</td></tr>
+          <tr><td><code>&lt;code&gt;</code></td><td>Computer code</td><td><code>monospace</code></td></tr>
+        </tbody>
+      </table>
+      <blockquote>A quotation looks like this. Browsers indent it so it stands apart.</blockquote>
+    </section>
+
+    <!-- ========== 5 ========== -->
+    <section id="lists">
+      <h2>5. Lists</h2>
+      <p>There are three kinds of list.</p>
+      <div class="demo">
+        <pre><code>&lt;ul&gt;
+  &lt;li&gt;Apples&lt;/li&gt;
+  &lt;li&gt;Bananas&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        <div class="result"><strong>Unordered (bullets)</strong><ul><li>Apples</li><li>Bananas</li></ul></div>
+      </div>
+      <div class="demo">
+        <pre><code>&lt;ol&gt;
+  &lt;li&gt;Wake up&lt;/li&gt;
+  &lt;li&gt;Study&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        <div class="result"><strong>Ordered (numbers)</strong><ol><li>Wake up</li><li>Study</li></ol></div>
+      </div>
+      <div class="demo">
+        <pre><code>&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;Page structure&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+        <div class="result"><strong>Description list</strong><dl><dt>HTML</dt><dd>Page structure</dd></dl></div>
+      </div>
+      <p class="remember"><strong>Remember:</strong> <code>ul</code> = unordered, <code>ol</code> = ordered, <code>li</code> = list item. Use <code>ol</code> only when order matters.</p>
+    </section>
+
+    <!-- ========== 6 ========== -->
+    <section id="tables">
+      <h2>6. Tables</h2>
+      <p>Tables show data in rows and columns. Don't use them for page layout.</p>
+      <div class="demo">
+        <pre><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th&gt;Subject&lt;/th&gt;&lt;th&gt;Marks&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;Maths&lt;/td&gt;&lt;td&gt;90&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Science&lt;/td&gt;&lt;td&gt;85&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        <div class="result">
+          <table>
+            <thead><tr><th>Subject</th><th>Marks</th></tr></thead>
+            <tbody><tr><td>Maths</td><td>90</td></tr><tr><td>Science</td><td>85</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <table>
+        <caption>Table tags</caption>
+        <thead><tr><th>Tag</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td><code>&lt;table&gt;</code></td><td>The whole table</td></tr>
+          <tr><td><code>&lt;tr&gt;</code></td><td>Table row</td></tr>
+          <tr><td><code>&lt;th&gt;</code></td><td>Header cell (bold, centered)</td></tr>
+          <tr><td><code>&lt;td&gt;</code></td><td>Data cell</td></tr>
+          <tr><td><code>colspan / rowspan</code></td><td>Make a cell cover several columns / rows</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ========== 7 ========== -->
+    <section id="links">
+      <h2>7. Links &amp; images</h2>
+      <pre><code>&lt;a href="https://github.com"&gt;Go to GitHub&lt;/a&gt;
+&lt;img src="photo.jpg" alt="A student reading a book"&gt;</code></pre>
+      <ul>
+        <li><code>href</code> is the destination of a link.</li>
+        <li><code>src</code> is the image file to show.</li>
+        <li><code>alt</code> describes the image for screen readers and when the image fails to load.</li>
+        <li>A link to another page in your folder is written <code>&lt;a href="about.html"&gt;</code>.</li>
+      </ul>
+      <p class="remember"><strong>Remember:</strong> <code>href</code>, <code>src</code> and <code>alt</code> are <em>attributes</em>. They add extra information inside the opening tag.</p>
+    </section>
+
+    <!-- ========== 8 ========== -->
+    <section id="forms">
+      <h2>8. Forms</h2>
+      <div class="demo">
+        <pre><code>&lt;form&gt;
+  &lt;label for="n"&gt;Name&lt;/label&gt;
+  &lt;input id="n" type="text"&gt;
+  &lt;label&gt;&lt;input type="checkbox"&gt; I agree&lt;/label&gt;
+  &lt;select&gt;
+    &lt;option&gt;Grade 9&lt;/option&gt;
+    &lt;option&gt;Grade 10&lt;/option&gt;
+  &lt;/select&gt;
+  &lt;button&gt;Send&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <div class="result">
+          <form onsubmit="return false">
+            <label for="n">Name</label><br>
+            <input id="n" type="text"><br>
+            <label><input type="checkbox"> I agree</label><br>
+            <select><option>Grade 9</option><option>Grade 10</option></select>
+            <button>Send</button>
+          </form>
+        </div>
+      </div>
+      <ul>
+        <li><code>&lt;input type="..."&gt;</code> can be <code>text</code>, <code>email</code>, <code>password</code>, <code>checkbox</code>, <code>radio</code>, <code>number</code> and more.</li>
+        <li>Always connect a <code>&lt;label&gt;</code> to its input with matching <code>for</code> and <code>id</code>.</li>
+      </ul>
+    </section>
+
+    <!-- ========== 9 ========== -->
+    <section id="css">
+      <h2>9. CSS basics</h2>
+      <p>A CSS rule has a <strong>selector</strong> and <strong>declarations</strong>.</p>
+      <pre><code>h1 {
+  color: navy;        /* property: value; */
+  font-size: 32px;
+}</code></pre>
+      <table>
+        <caption>Three kinds of selector</caption>
+        <thead><tr><th>Selector</th><th>Example</th><th>Targets</th></tr></thead>
+        <tbody>
+          <tr><td>Element</td><td><code>p { }</code></td><td>Every paragraph</td></tr>
+          <tr><td>Class</td><td><code>.note { }</code></td><td>Anything with <code>class="note"</code></td></tr>
+          <tr><td>ID</td><td><code>#menu { }</code></td><td>The one element with <code>id="menu"</code></td></tr>
+        </tbody>
+      </table>
+      <table>
+        <caption>Properties you will use most</caption>
+        <thead><tr><th>Property</th><th>What it does</th><th>Example value</th></tr></thead>
+        <tbody>
+          <tr><td><code>color</code></td><td>Text color</td><td><code>#14213d</code></td></tr>
+          <tr><td><code>background</code></td><td>Background color</td><td><code>lightyellow</code></td></tr>
+          <tr><td><code>font-family</code></td><td>Typeface</td><td><code>Arial, sans-serif</code></td></tr>
+          <tr><td><code>font-size</code></td><td>Text size</td><td><code>18px</code></td></tr>
+          <tr><td><code>margin</code></td><td>Space outside the box</td><td><code>20px</code></td></tr>
+          <tr><td><code>padding</code></td><td>Space inside the box</td><td><code>10px</code></td></tr>
+          <tr><td><code>border</code></td><td>Line around the box</td><td><code>1px solid black</code></td></tr>
+        </tbody>
+      </table>
+      <h3>The box model</h3>
+      <p>Every element is a box made of four layers, from inside out:</p>
+      <div class="box" aria-label="Box model diagram">
+        <div class="b-margin">margin
+          <div class="b-border">border
+            <div class="b-padding">padding
+              <div class="b-content">content</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 10 ========== -->
+    <section id="cheat">
+      <h2>10. Quick revision cheat sheet</h2>
+      <table>
+        <thead><tr><th>I want to...</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td>Add a title</td><td><code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code></td></tr>
+          <tr><td>Write a paragraph</td><td><code>&lt;p&gt;</code></td></tr>
+          <tr><td>Make a bullet list</td><td><code>&lt;ul&gt;</code> + <code>&lt;li&gt;</code></td></tr>
+          <tr><td>Make a numbered list</td><td><code>&lt;ol&gt;</code> + <code>&lt;li&gt;</code></td></tr>
+          <tr><td>Show data in a grid</td><td><code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code></td></tr>
+          <tr><td>Link to a page</td><td><code>&lt;a href="..."&gt;</code></td></tr>
+          <tr><td>Show a picture</td><td><code>&lt;img src="..." alt="..."&gt;</code></td></tr>
+          <tr><td>Collect input</td><td><code>&lt;form&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;button&gt;</code></td></tr>
+          <tr><td>Change colors or spacing</td><td>CSS in <code>style.css</code></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ========== 11 ========== -->
+    <section id="practice">
+      <h2>11. Practice</h2>
+      <h3>Check your understanding</h3>
+      <p>Click a question to reveal the answer.</p>
+      <details><summary>Which language controls the colors of a page?</summary><p>CSS.</p></details>
+      <details><summary>What is the difference between <code>ul</code> and <code>ol</code>?</summary><p><code>ul</code> makes bullets (order doesn't matter). <code>ol</code> makes numbers (order matters).</p></details>
+      <details><summary>Which tag makes a table header cell?</summary><p><code>&lt;th&gt;</code>.</p></details>
+      <details><summary>Why should every image have an <code>alt</code> attribute?</summary><p>It describes the image for people using screen readers and shows if the image can't load.</p></details>
+      <details><summary>What is the difference between margin and padding?</summary><p>Padding is space <em>inside</em> the border. Margin is space <em>outside</em> it.</p></details>
+
+      <h3>Mini exercises</h3>
+      <ol>
+        <li>Create a page called <code>about-me.html</code> with one <code>h1</code> and two paragraphs.</li>
+        <li>Add a bullet list of your three favorite subjects.</li>
+        <li>Add a table of your weekly timetable (at least 3 rows).</li>
+        <li>Link <code>index.html</code> to <code>about-me.html</code>.</li>
+        <li>Create <code>style.css</code> and change the background color and font.</li>
+      </ol>
+    </section>
+
+    <!-- ========== 12 ========== -->
+    <section id="publish">
+      <h2>12. Publish on GitHub Pages</h2>
+      <ol>
+        <li>Create a free account at github.com.</li>
+        <li>Click <strong>New repository</strong>, name it, and keep it Public.</li>
+        <li>Click <strong>Add file, then Upload files</strong>, add <code>index.html</code> and <code>style.css</code>, then <strong>Commit changes</strong>.</li>
+        <li>Go to <strong>Settings, then Pages</strong>. Choose the <code>main</code> branch and click <strong>Save</strong>.</li>
+        <li>After a minute, visit <code>https://your-username.github.io/your-repo-name/</code>.</li>
+      </ol>
+    </section>
+
+  </main>
+</div>
+
+<footer class="foot"><p>Made with HTML and CSS. Free to copy, change and share. Tip: press Ctrl+P (or Cmd+P) to print these notes.</p></footer>
+
+</body>
+</html>
